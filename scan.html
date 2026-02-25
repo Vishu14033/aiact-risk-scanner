@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Risk Scan</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function calculateRisk() {
+      let score = 0;
+
+      if (document.getElementById("q1").value === "yes") score += 2;
+      if (document.getElementById("q2").value === "yes") score += 2;
+      if (document.getElementById("q3").value === "yes") score += 2;
+
+      let result = "";
+
+      if (score <= 2) result = "Minimal Risk";
+      else if (score <= 4) result = "Limited Risk";
+      else result = "High Risk";
+
+      document.getElementById("result").innerHTML =
+        "Your Risk Level: " + result;
+    }
+  </script>
+</head>
+<body>
+  <h2>Risk Assessment</h2>
+
+  <p>Do you use biometric identification?</p>
+  <select id="q1">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+  </select>
+
+  <p>Is your AI used in hiring?</p>
+  <select id="q2">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+  </select>
+
+  <p>Do you process EU citizen data?</p>
+  <select id="q3">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+  </select>
+
+  <br><br>
+  <button onclick="calculateRisk()">Check Risk</button>
+
+  <h3 id="result"></h3>
+
+</body>
+</html>
